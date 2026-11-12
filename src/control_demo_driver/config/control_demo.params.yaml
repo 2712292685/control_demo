@@ -1,0 +1,25 @@
+control_demo_driver:
+  ros__parameters:
+    robot_ip: "192.168.234.1"
+    send_port: 8081
+    recv_port: 8080
+    role: "sdk"
+    control_rate_hz: 30.0
+    joy_timeout_sec: 0.35
+    status_rate_hz: 2.0
+    auto_request_control: true
+    control_request_period_sec: 1.0
+    max_speed_scale: 0.5
+    command_debounce_ms: 300
+    estop_recovery_cmd: 122
+    bridge_port: 8765
+    warn_period_sec: 5.0
+
+control_demo_web:
+  ros__parameters:
+    port: 8000
+    bind_address: "0.0.0.0"
+    robot_ip: "192.168.234.1"
+    status_timeout_sec: 2.0
+    bridge_host: "127.0.0.1"
+    bridge_port: 8765

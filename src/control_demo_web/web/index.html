@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#060a0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Zsibot 机器狗控制器</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header id="hud">
+    <div class="hud-item" id="link-pill">
+      <span class="dot off" id="link-dot"></span>
+      <span id="link-text">未连接</span>
+    </div>
+    <div class="hud-item" id="battery-pill">--% · --V</div>
+    <div class="hud-item" id="mode-pill">等待控制权</div>
+  </header>
+
+  <section id="posture-bar" aria-label="姿态控制">
+    <button class="cmd-btn" data-command="stand_up">站立</button>
+    <button class="cmd-btn" data-command="sit_down">趴下</button>
+    <button class="cmd-btn" data-command="balance_stand">平衡</button>
+    <button class="cmd-btn" data-command="move_mode">移动</button>
+    <button class="cmd-btn" data-command="lock">锁定</button>
+  </section>
+
+  <section id="speed-bar" aria-label="速度档位">
+    <button class="speed-btn" data-command="slow" aria-pressed="false">慢</button>
+    <button class="speed-btn" data-command="normal" aria-pressed="false">正常</button>
+    <button class="speed-btn" data-command="fast" aria-pressed="false">快</button>
+  </section>
+
+  <main id="stage">
+    <div class="stick" id="stick-left" aria-label="前后移动与原地转向摇杆">
+      <div class="stick-base">
+        <div class="stick-knob"></div>
+      </div>
+      <span class="stick-label">前后 / 转向</span>
+    </div>
+
+    <div class="stick" id="stick-right" aria-label="左右平移摇杆，左右移动">
+      <div class="stick-base">
+        <div class="stick-knob"></div>
+      </div>
+      <span class="stick-label">左右平移</span>
+    </div>
+
+    <button id="estop" aria-label="紧急停止">急停</button>
+  </main>
+
+  <div id="lock-overlay" hidden>
+    <div class="lock-card">
+      <h2 id="lock-title">正在连接</h2>
+      <p id="lock-reason">等待控制器状态...</p>
+      <button id="resume-btn" class="primary-btn" hidden>恢复控制</button>
+      <button id="retry-btn" class="secondary-btn">重试</button>
+      <p class="lock-footnote">实体遥控器 / 断电开关始终是最终安全手段</p>
+    </div>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/joystick.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
